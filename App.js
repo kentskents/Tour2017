@@ -13,8 +13,13 @@ import {
 } from 'react-native';
 import MapView from 'react-native-maps';
 import { GiftedChat } from 'react-native-gifted-chat';
+import FCM from "react-native-fcm";
 
 export default class App extends Component<{}> {
+  componentDidMount() {
+    FCM.subscribeToTopic('/topics/test');
+  }
+
   render() {
     return (
       <MapView
