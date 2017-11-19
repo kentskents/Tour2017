@@ -2,6 +2,8 @@
 import React, { Component } from 'react';
 // import { View, Text, StyleSheet, Button, TouchableOpacity } from 'react-native';
 import {
+  // ListView,
+  ActivityIndicator,
   ScrollView,
   Button,
   Text,
@@ -135,14 +137,14 @@ const cats = [
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
+    backgroundColor: '#ffe9a6',
     alignItems: 'center',
     justifyContent: 'center',
-    paddingHorizontal: 16,
+    // paddingHorizontal: 16,
   },
   heading: {
     fontSize: 24,
-    color: 'rgba(14, 13, 13, .38)',
+    color: 'rgba(230, 180, 31, 0.38)',
   },
   paragraph: {
     fontSize: 18,
@@ -151,7 +153,7 @@ const styles = StyleSheet.create({
   listItem: {
     borderBottomWidth: 1,
     borderBottomColor: 'rgba(14, 13, 13, .38)',
-    marginVertical: 12,
+    // marginVertical: 12,
   },
   map: {
     ...StyleSheet.absoluteFillObject,
@@ -160,33 +162,67 @@ const styles = StyleSheet.create({
 
 
 class MainScreen extends Component {
+  // constructor(props) {
+  //   super(props);
+  //   this.state = {
+  //     isLoading: true
+  //   }
+  // }
 
-    /* fetchでデータ取ってきたい */
+  /* fetchでデータ取ってきたい */
+  // componentDidMount() {
+  //   return fetch('https://facebook.github.io/react-native/movies.json')
+  //     .then((response) => response.json())
+  //     .then((responseJson) => {
+  //       // let ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  //       let ds = new FlatList.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
+  //       this.setState({
+  //         isLoading: false,
+  //         dataSource: ds.cloneWithRows(responseJson.movies),
+  //       }, function() {
+  //         // do something with new state
+  //       });
+  //     })
+  //     .catch((error) => {
+  //       console.error(error);
+  //     });
+  // }
 
-    render() {
-        return (
-            /* androidのエミュではスクロールできないバグあるらしい */
-            <ScrollView>
-            <FlatList
-              style={{marginHorizontal:5}}
-              numColumns={RowNum}
-              // data={screenProps.cats}
-              data={cats}
-              renderItem={({ item }) => (
-                <TouchableOpacity
-                  key={item.key}
-                  style={styles.listItem}
-                  /* 猫の画像をクリックすると詳細にジャンプ */
-                  onPress={() => this.props.navigation.navigate('Detail', item)}
-                >
-                  <Image style={{width:DEVICE_WIDTH/RowNum,height:200}} source={{uri:item.image}}/>
-                </TouchableOpacity>
-              )}
-              contentContainerStyle={styles.container}
-            />
-            </ScrollView>
-        )
-    }
+  render() {
+    // if (this.state.isLoading) {
+    //   return (
+    //     <View style={{flex: 1, paddingTop: 20}}>
+    //       <ActivityIndicator />
+    //     </View>
+    //   );
+    // }
+
+
+    return (
+        /* androidのエミュではスクロールできないバグあるらしい */
+        /* ↑恥ずかしい！ */
+        <ScrollView>
+        <FlatList
+          style={{marginHorizontal:5}}
+          numColumns={RowNum}
+          // data={screenProps.cats}
+          // dataSource={this.state.dataSource}
+          data={cats}
+          renderItem={({ item }) => (
+            <TouchableOpacity
+              key={item.key}
+              style={styles.listItem}
+              /* 猫の画像をクリックすると詳細にジャンプ */
+              onPress={() => this.props.navigation.navigate('Detail', item)}
+            >
+              <Image style={{width:DEVICE_WIDTH/RowNum,height:200}} source={{uri:item.image}}/>
+            </TouchableOpacity>
+          )}
+          contentContainerStyle={styles.container}
+        />
+        </ScrollView>
+    )
+  }
 }
 
 

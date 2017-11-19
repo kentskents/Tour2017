@@ -8,8 +8,8 @@ import {
   FlatList,
   TouchableOpacity,
 } from 'react-native';
-import MapView from 'react-native-maps';
-import { GiftedChat } from 'react-native-gifted-chat';
+// import MapView from 'react-native-maps';
+// import { GiftedChat } from 'react-native-gifted-chat';
 import FCM from "react-native-fcm";
 import Entypo from 'react-native-vector-icons/Entypo';
 import { TabNavigator, TabView } from 'react-navigation'
@@ -21,8 +21,11 @@ const tabNav = TabNavigator({
         screen: stackNav,
         navigationOptions: {
             tabBarLabel:"募集中",
-            tabBarIcon: ({ tintColor }) => <Entypo name={"glass"} size={30} color={tintColor} />
-        }
+            // tintColor: '#0087B7',
+            // tabBarIcon: ({ tintColor }) => <Entypo name={"glass"} size={30} color={tintColor} />,
+            // tabBarIcon: (<Entypo name={"glass"} size={30} color={#ebb207} />,
+            titleStyle: {color: '#FFFFFF'}
+            }
     },
     TabItem2: {
         screen: stackNav,
@@ -34,7 +37,15 @@ const tabNav = TabNavigator({
 }, {
         tabBarPosition: 'bottom',
         tabBarOptions: {
-            activeTintColor: '#222',
+            activeTintColor: '#e97017',
+            inactiveTintColor: 'rgb(250, 203, 100)',
+            labelStyle: {
+              fontSize: 20,
+              // fontFamily: "arial unicode ms",
+            },
+            style: {
+              backgroundColor: 'rgba(255, 243, 213, 1)'
+            },
         }
 });
 

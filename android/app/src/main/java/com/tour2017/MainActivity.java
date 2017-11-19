@@ -1,6 +1,9 @@
 package com.tour2017;
 
 import com.facebook.react.ReactActivity;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.airbnb.android.react.maps.MapsPackage;
+import com.evollu.react.fcm.FIRMessagingPackage;
 
 public class MainActivity extends ReactActivity {
 
