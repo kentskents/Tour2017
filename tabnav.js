@@ -13,12 +13,14 @@ import {
 import FCM from "react-native-fcm";
 import Entypo from 'react-native-vector-icons/Entypo';
 import { TabNavigator, TabView } from 'react-navigation'
-import stackNav from './stacknav';
+import wantScreen from './want_screen';
+import closeScreen from './close_screen';
+// import stackNav from './map_view';
 
 
 const tabNav = TabNavigator({
     TabItem1: {
-        screen: stackNav,
+        screen: wantScreen,
         navigationOptions: {
             tabBarLabel:"募集中",
             // tintColor: '#0087B7',
@@ -28,12 +30,19 @@ const tabNav = TabNavigator({
             }
     },
     TabItem2: {
-        screen: stackNav,
+        screen: closeScreen,
         navigationOptions: {
             tabBarLabel:"マッチング済み",
             tabBarIcon: ({ tintColor }) => <Entypo name={"glass"} size={30} color={tintColor} />
         }
-    }
+    },
+    // TabItem3: {
+    //     screen: map_view,
+    //     navigationOptions: {
+    //         tabBarLabel:"マップ",
+    //         tabBarIcon: ({ tintColor }) => <Entypo name={"glass"} size={30} color={tintColor} />
+    //     }
+    // }
 }, {
         tabBarPosition: 'bottom',
         tabBarOptions: {
