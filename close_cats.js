@@ -187,6 +187,19 @@ class MainScreen extends Component {
   //       console.error(error);
   //     });
   // }
+  state = {
+    cats: [],
+  };
+
+  componentDidMount() {
+    fetch("http://10.0.2.2:3000/past_cats.json")
+      .then(response => response.json())
+      .then(responseJson => this.setState({
+        cats: responseJson,
+      }))
+      .catch(e => console.log(e));
+  }
+
 
   render() {
     // if (this.state.isLoading) {
@@ -207,7 +220,8 @@ class MainScreen extends Component {
           numColumns={RowNum}
           // data={screenProps.cats}
           // dataSource={this.state.dataSource}
-          data={cats}
+          data={this.state.cats}
+          keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
               key={item.key}

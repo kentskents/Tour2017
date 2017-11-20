@@ -178,13 +178,26 @@ const styles = StyleSheet.create({
 
 class WantCats extends Component {
 
+  state = {
+    cats: [],
+  };
+
+  componentDidMount() {
+    fetch("http://10.0.2.2:3000/cats.json")
+      .then(response => response.json())
+      .then(responseJson => this.setState({
+        cats: responseJson,
+      }))
+      .catch(e => console.log(e));
+  }
 
   render() {
 
     return (
         <ScrollView>
         <FlatList
-          data={cats}
+          data={this.state.cats}
+          keyExtractor={(item, index) => item.id}
           renderItem={({ item }) => (
             <TouchableOpacity
               key={item.key}
