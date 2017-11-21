@@ -205,7 +205,7 @@ class WantCats extends Component {
               /* 猫の画像をクリックすると詳細にジャンプ */
               onPress={() => this.props.navigation.navigate('Detail', item)}
             >
-              <Image style={{width:DEVICE_WIDTH,height:DEVICE_HEIGHT}} source={{uri:item.image}}/>
+              <Image style={{width:DEVICE_WIDTH,height:550}} source={{uri:item.image}}/>
             </TouchableOpacity>
           )}
           contentContainerStyle={styles.container}
